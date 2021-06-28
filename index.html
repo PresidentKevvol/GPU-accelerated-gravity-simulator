@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>GPU accelerated Gravity simulator</title>
+        <link rel="stylesheet" href="index.css">
+        <!-- gpu.js -->
+        <script src="gpu-browser.min.js"></script>
+        <!-- randseed from cdnjs -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+        
+        <script src="objects_classes.js"></script>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <!-- the main canvas -->
+        <canvas id="main-vas"></canvas>
+        <!-- the status bar with the tick count -->
+        <div id=status>
+            Scale: <span id="status-scale"></span><br>
+            Tick count: <span id="status-tick-count"></span><br>
+        </div>
+        
+        <!-- the intro screen with the options -->
+        <div id="intro">
+            <div id="welcome">GPU accelerated gravity simulator</div>
+            <div id="choose">
+                Choose how to spawn the entities:<br>
+                <br>
+                <input type="radio" name="mode" value="solar_system" checked="checked" id="solar" class="mode-radios"> <label for="solar">Solar system</label><br>
+                <label for="solar">A single massive entity (the star) in the middle with many smaller massed entities (the planets) spawned near it</label><br>
+                <br>
+                <input type="radio" name="mode" value="stars_and_planets" id="snp" class="mode-radios"> <label for="snp">Stars and planets</label><br>
+                <label for="snp">multiple massive entity (stars) with many smaller massed entities (planets) spawned interlaced into it</label><br>
+                <br>
+                Particle count: <input type="number" value="200" id="particle-count"><br>
+                <br>
+                random seed (optional): <input id="rand-seed"><br>
+
+            </div>
+            <button id="start-btn">Start!</button>
+        </div>
+    </body>
+</html>
