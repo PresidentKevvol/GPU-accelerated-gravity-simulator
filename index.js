@@ -52,8 +52,8 @@ function index_setup(){
 
 function reset_canvas_size() {
     //get the size of the viewport
-    view_width = document.documentElement.clientWidth;
-    view_height = document.documentElement.clientHeight;
+    view_width = document.documentElement.clientWidth || window.innerWidth;
+    view_height = document.documentElement.clientHeight || window.innerHeight;
     
     //set the drawing width/height to client viewport size
     main_canvas.setAttribute("width", view_width);
@@ -175,7 +175,7 @@ function setup_spawn_stars_and_planets(particle_count) {
     for (var i=0; i<particle_count; i++) {
         var col, mass;
         
-        if (Math.random() < stars_ratio) { //if a star
+        if (spawn_rng() < stars_ratio) { //if a star
             col = "#ffff66";
             mass = 20000000000.0 + spawn_rng() * 80000000000.0;
         } else { //if a planet
@@ -185,8 +185,8 @@ function setup_spawn_stars_and_planets(particle_count) {
         
         //var mass = 3000000000.0;
         var enti = new Entity(spawn_rng() * 640 - 320, spawn_rng() * 640 - 320, mass, col);
-        enti.velocity_x = spawn_rng() * 0.5 - 0.25;
-        enti.velocity_y = spawn_rng() * 0.5 - 0.25;
+        enti.velocity_x = spawn_rng() * 5 - 2.5;
+        enti.velocity_y = spawn_rng() * 5 - 2.5;
         entity_array.push(enti);
     }
 }
